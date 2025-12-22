@@ -1,56 +1,33 @@
 <template>
-  <h2 class="year">{{ displayYear }}</h2>
+  <span>{{ display }}</span>
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
 
-  const startYear = '2025'
-  const endYear = '2026'
-
-  const displayYear = ref(startYear)
-
-  function animateYear() {
-    const duration = 1500 // ms
-    const startTime = performance.now()
-
-    function update(now: number) {
-      const progress = Math.min((now - startTime) / duration, 1)
-
-      let result = ''
-      for (let i = 0; i < endYear.length; i++) {
-        if (progress > i / endYear.length) {
-          result += endYear[i]
-        } else {
-          result += Math.floor(Math.random() * 10)
-        }
-      }
-
-      displayYear.value = result
-
-      if (progress < 1) {
-        requestAnimationFrame(update)
-      } else {
-        displayYear.value = endYear
-      }
-    }
-
-    requestAnimationFrame(update)
-  }
+  const display = ref('2025')
+  const target = '2026'
 
   onMounted(() => {
-    setTimeout(animateYear, 800)
+    const duration = 1400
+    const start = performance.now()
+
+    function tick(now: number) {
+      const p = Math.min((now - start) / duration, 1)
+
+      let out = ''
+      for (let i = 0; i < target.length; i++) {
+        out += p > i / target.length
+          ? target[i]
+          : Math.floor(Math.random() * 10)
+      }
+
+      display.value = out
+
+      if (p < 1) requestAnimationFrame(tick)
+      else display.value = target
+    }
+
+    requestAnimationFrame(tick)
   })
 </script>
-
-<style scoped>
-  .year {
-    font-size: 6rem;
-    font-weight: 800;
-    color: #ffd700;
-    letter-spacing: 0.15em;
-    text-shadow:
-      0 0 10px rgba(255, 215, 0, 0.6),
-      0 0 25px rgba(255, 215, 0, 0.4);
-  }
-</style>

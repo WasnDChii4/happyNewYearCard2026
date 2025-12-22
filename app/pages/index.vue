@@ -1,16 +1,27 @@
 <template>
-  <GalaxyBackground />
-  <Fireworks />
+  <GalaxyBackground v-if="phase !== 'idle'" />
+  <Fireworks v-if="phase === 'finished'" />
 
   <main class="card">
-    <NewYearText />
+    <NewYearText :phase="phase" @start="startSequence" />
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
+  import { ref } from 'vue'
   import GalaxyBackground from '@/components/GalaxyBackground.vue'
   import Fireworks from '@/components/Fireworks.vue'
   import NewYearText from '@/components/NewYearText.vue'
+
+  const phase = ref<'idle' | 'transition' | 'finished'>('idle')
+
+  function startSequence() {
+    phase.value = 'transition'
+
+    setTimeout(() => {
+      phase.value = 'finished'
+    }, 1800)
+  }
 </script>
 
 <style scoped>
@@ -18,8 +29,9 @@
     position: relative;
     z-index: 2;
     height: 100vh;
+    width: 100vw;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 </style>
