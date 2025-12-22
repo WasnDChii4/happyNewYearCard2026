@@ -18,7 +18,7 @@
     resize()
     window.addEventListener('resize', resize)
 
-    const stars = Array.from({ length: 240 }, () => ({
+    const stars = Array.from({ length: 150 }, () => ({
       x: Math.random() * c.width,
       y: Math.random() * c.height,
       r: Math.random() * 1.2 + 0.4,
