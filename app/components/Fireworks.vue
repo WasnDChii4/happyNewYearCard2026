@@ -75,7 +75,7 @@
         this.y = c.height
         this.vy = -(Math.random() * 4 + 6)
         this.targetY = Math.random() * c.height * 0.4 + 120
-        this.color = colors[Math.floor(Math.random() * colors.length)]
+        this.color = colors[Math.floor(Math.random() * colors.length)]!
       }
 
       update() {
@@ -122,23 +122,23 @@
       ctx.clearRect(0, 0, c.width, c.height)
 
       for (let i = fireworks.length - 1; i >= 0; i--) {
-        const f = fireworks[i]
-        f.update()
-        if (!f.exploded) {
-          f.draw()
-        } else {
-          fireworks.splice(i, 1)
-        }
+      const f = fireworks[i]!
+      f.update()
+      if (!f.exploded) {
+        f.draw()
+      } else {
+        fireworks.splice(i, 1)
       }
+    }
 
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i]
-        p.update()
-        p.draw()
-        if (p.alpha <= 0) {
-          particles.splice(i, 1)
-        }
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i]!
+      p.update()
+      p.draw()
+      if (p.alpha <= 0) {
+        particles.splice(i, 1)
       }
+    }
 
       requestAnimationFrame(animate)
     }

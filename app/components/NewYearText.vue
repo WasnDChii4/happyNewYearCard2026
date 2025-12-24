@@ -1,33 +1,63 @@
 <template>
   <div class="wrapper">
-    <div class="year">
-      <AnimatedYear v-if="phase !== 'idle'" />
-      <span v-else class="glow">2025</span>
+    <transition
+      name="dip-black"
+      @after-enter="onDipFullyBlack"
+      @after-leave="onDipFinished"
+    >
+      <div v-if="showDip" class="dip-overlay"></div>
+    </transition>
+
+    <div class="year" v-if="!hideInitialContent">
+      <span class="glow">2025</span>
+    </div>
+
+    <div class="year" v-if="phase !== 'idle' && hideInitialContent">
+      <AnimatedYear />
     </div>
 
     <div class="after-year">
       <transition name="slide-fade">
         <div v-if="phase === 'finished'" class="text">
-          <h1>🎉 Happy New Year</h1>
-          <p>May your year be filled with success and happiness ✨</p>
+          <h1 class="font-bold">Happy New Year</h1>
+          <p>✨ May your year be filled with success and happiness ✨</p>
         </div>
       </transition>
     </div>
 
-    <button v-if="phase === 'idle'" class="tap" @click="$emit('start')">
+    <button v-if="phase === 'idle' && !hideInitialContent" class="tap text-black font-bold font-caveat-brush-regular text-3xl" @click="handleTap">
       Tap Me!
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
+  import AnimatedYear from '@/components/AnimatedYear.vue'
+
   defineProps<{
     phase: 'idle' | 'transition' | 'finished'
   }>()
 
-  defineEmits(['start'])
+  const emit = defineEmits(['start'])
 
-  import AnimatedYear from '@/components/AnimatedYear.vue'
+  const showDip = ref(false)
+  const hideInitialContent = ref(false)
+
+  function handleTap() {
+    showDip.value = true
+    setTimeout(() => {
+      showDip.value = false
+    }, 600)
+  }
+
+  function onDipFullyBlack() {
+    hideInitialContent.value = true
+  }
+
+  function onDipFinished() {
+    emit('start')
+  }
 </script>
 
 <style scoped>
@@ -39,6 +69,36 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .dip-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, #000, #000);
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .dip-black-enter-active {
+    transition: opacity 0.4s ease;
+  }
+  .dip-black-enter-from {
+    opacity: 0;
+  }
+  .dip-black-enter-to {
+    opacity: 1;
+  }
+
+  .dip-black-leave-active {
+    transition: opacity 0.9s ease;
+  }
+  .dip-black-leave-from {
+    opacity: 1;
+  }
+  .dip-black-leave-to {
+    opacity: 0;
   }
 
   .year {
@@ -48,8 +108,7 @@
     color: #ffd700;
   }
 
-  .glow,
-  .year span {
+  .glow {
     text-shadow:
       0 0 8px rgba(255, 215, 0, 0.6),
       0 0 20px rgba(255, 215, 0, 0.5),
@@ -89,12 +148,11 @@
   }
 
   .tap {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 0.75rem 2.5rem;
-    border-radius: 999px;
+    border-radius: 25px;
     background: linear-gradient(135deg, #ffd700, #ffae00);
     border: none;
-    font-size: 1.1rem;
     cursor: pointer;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
   }

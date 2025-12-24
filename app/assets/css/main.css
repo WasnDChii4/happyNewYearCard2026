@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+@import 'tailwindcss/base';
+
+@layer base {
+  :root {
+    --font-caveat-brush-regular: "Caveat Brush", cursive;
+  }
+
+  .font-caveat-brush-regular {
+    font-family: var(--font-caveat-brush-regular);
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
