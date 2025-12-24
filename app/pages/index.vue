@@ -5,6 +5,8 @@
   <main class="card">
     <NewYearText :phase="phase" @start="startSequence" />
   </main>
+
+  <Footer :show="phase === 'finished'" />
 </template>
 
 <script setup lang="ts">
@@ -12,6 +14,7 @@
   import GalaxyBackground from '@/components/GalaxyBackground.vue'
   import Fireworks from '@/components/Fireworks.vue'
   import NewYearText from '@/components/NewYearText.vue'
+  import Footer from '@/components/Footer.vue'
 
   const phase = ref<'idle' | 'transition' | 'finished'>('idle')
 

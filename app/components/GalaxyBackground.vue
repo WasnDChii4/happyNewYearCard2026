@@ -22,10 +22,13 @@
       x: Math.random() * c.width,
       y: Math.random() * c.height,
       r: Math.random() * 1.2 + 0.4,
-      v: Math.random() * 0.3 + 0.08 
+      vx: Math.random() * 0.3 + 0.08,
+      drift: (Math.random() - 0.5) * 0.03
     }))
 
     function animate() {
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+
       ctx.fillStyle = 'rgba(0, 0, 0, 0.35)'
       ctx.fillRect(0, 0, c.width, c.height)
 
@@ -33,9 +36,8 @@
         ctx.save()
 
         ctx.shadowColor = 'white'
-        ctx.shadowBlur = s.v * 12
-
-        ctx.globalAlpha = Math.min(s.v * 4, 1)
+        ctx.shadowBlur = s.vx * 12
+        ctx.globalAlpha = Math.min(s.vx * 4, 1)
 
         ctx.beginPath()
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
@@ -44,13 +46,16 @@
 
         ctx.restore()
 
-        s.x += s.v
-        s.y += s.v * 0.15
+        s.x += s.vx
+        s.y += s.drift
 
         if (s.x > c.width) {
           s.x = 0
           s.y = Math.random() * c.height
         }
+
+        if (s.y < 0) s.y = c.height
+        if (s.y > c.height) s.y = 0
       }
 
       requestAnimationFrame(animate)
