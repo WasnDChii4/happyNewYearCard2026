@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
 
 @import 'tailwindcss/base';
 
@@ -9,6 +10,7 @@
     --font-caveat-brush-regular: "Caveat Brush", cursive;
     --font-finger-paint-regular: "Finger Paint", sans-serif;
     --font-bbh-bartle-regular: "BBH Bartle", sans-serif;
+    --font-henny-penny-regular: "Henny Penny", system-ui;
   }
 
   .font-caveat-brush-regular {
@@ -19,6 +21,9 @@
   }
   .font-bbh-bartle-regular {
     font-family: var(--font-bbh-bartle-regular);
+  }
+  .font-henny-penny-regular {
+    font-family: var(--font-henny-penny-regular);
   }
 }
 
