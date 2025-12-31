@@ -31,8 +31,8 @@
   .card {
     position: relative;
     z-index: 2;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100svh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
