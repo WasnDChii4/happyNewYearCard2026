@@ -1,14 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
 
 @import 'tailwindcss/base';
 
 @layer base {
   :root {
     --font-caveat-brush-regular: "Caveat Brush", cursive;
+    --font-finger-paint-regular: "Finger Paint", sans-serif;
+    --font-bbh-bartle-regular: "BBH Bartle", sans-serif;
   }
 
   .font-caveat-brush-regular {
     font-family: var(--font-caveat-brush-regular);
+  }
+  .font-finger-paint-regular {
+    font-family: var(--font-finger-paint-regular);
+  }
+  .font-bbh-bartle-regular {
+    font-family: var(--font-bbh-bartle-regular);
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer text-3xl font-bold" :class="{ show }">
+  <footer class="footer text-lg font-bold font-finger-paint-regular" :class="{ show }">
     <span>By Wasn</span>
   </footer>
 </template>
@@ -16,8 +16,6 @@
     bottom: 16px;
     left: 50%;
     transform: translateX(-50%) translateY(6px);
-
-    font-size: 0.85rem;
     opacity: 0;
     color: white;
     letter-spacing: 0.08em;

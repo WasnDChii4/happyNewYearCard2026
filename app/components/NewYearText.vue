@@ -19,7 +19,7 @@
     <div class="after-year">
       <transition name="slide-fade">
         <div v-if="phase === 'finished'" class="text">
-          <h1 class="font-bold">Happy New Year</h1>
+          <h1 class="font-bold font-bbh-bartle-regular">Happy New Year</h1>
           <p>✨ May your year be filled with success and happiness ✨</p>
         </div>
       </transition>
