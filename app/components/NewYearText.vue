@@ -8,7 +8,7 @@
       <div v-if="showDip" class="dip-overlay"></div>
     </transition>
 
-    <div class="year" v-if="!hideInitialContent">
+    <div class="year font-irish-grover-regular" v-if="!hideInitialContent">
       <span class="glow">2025</span>
     </div>
 

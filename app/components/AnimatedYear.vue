@@ -1,5 +1,5 @@
 <template>
-  <span>{{ display }}</span>
+  <span class="font-irish-grover-regular">{{ display }}</span>
 </template>
 
 <script setup lang="ts">

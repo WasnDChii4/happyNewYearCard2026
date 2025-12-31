@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 
 @import 'tailwindcss/base';
 
@@ -11,6 +12,7 @@
     --font-finger-paint-regular: "Finger Paint", sans-serif;
     --font-bbh-bartle-regular: "BBH Bartle", sans-serif;
     --font-henny-penny-regular: "Henny Penny", system-ui;
+    --font-irish-grover-regular: "Irish Grover", system-ui;
   }
 
   .font-caveat-brush-regular {
@@ -24,6 +26,9 @@
   }
   .font-henny-penny-regular {
     font-family: var(--font-henny-penny-regular);
+  }
+  .font-irish-grover-regular {
+    font-family: var(--font-irish-grover-regular);
   }
 }
 
