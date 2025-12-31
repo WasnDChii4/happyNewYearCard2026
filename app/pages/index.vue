@@ -25,7 +25,7 @@
       phase.value = 'finished'
     }, 1800)
   }
-</script>adwda
+</script>
 
 <style scoped>
   .card {
